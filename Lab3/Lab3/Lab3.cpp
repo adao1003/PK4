@@ -64,7 +64,18 @@ public:
 	}
 	}
 };
-
+template<long long unsigned int x> struct fib
+{
+	const static long long unsigned f = fib<x - 1>::f+fib<x - 2>::f;
+};
+template<> struct fib<0>
+{
+	const static long long unsigned f = 0;
+};
+template<> struct fib<1>
+{
+	const static long long unsigned f = 1;
+};
 int main()
 {
 	int x = 0;
@@ -93,6 +104,7 @@ int main()
 	soccerTeam.addPlayer(p3);
 	baseballTeam.PrintTeam();
 	soccerTeam.PrintTeam();
+	cout << fib<100>::f << endl;
     return 0;
 }
 
